@@ -7,6 +7,7 @@ class DbContext {
   Values = mongoose.model('Value', ValueSchema);
   Account = mongoose.model('Account', AccountSchema);
 
+  // NOTE registers a new collection within mongodb. Cars is the property that we that we access in our code, the 'Car' string names the collection within mongodb, and the CarSchema locks down this collection with the restraints we set up in our CarSchema
   Cars = mongoose.model('Car', CarSchema)
 }
 
