@@ -49,7 +49,7 @@ export class Startup {
     RegisterSocketHandlers()
     app.use(router)
 
-    app.use('', express.static(Paths.Public))
+    app.use(process.env.ROUTE_PREFIX || '', express.static(Paths.Public))
 
     Startup.registerErrorHandlers(app)
   }
