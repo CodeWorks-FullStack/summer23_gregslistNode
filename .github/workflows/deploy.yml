@@ -29,8 +29,7 @@ jobs:
         run: |
           sudo ssh -i ~/.ssh/id_rsa.pem -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_IP_ADDRESS '
             sudo rm -rf summer23_gregslistNode &&
-            mkdir summer23_gregslistNode &&
-            echo "${{secrets.ENV}}" > summer23_gregslistNode/gregslistNode/.env
+            mkdir summer23_gregslistNode
             '
 
       - name: Copy your code to the EC2📔
@@ -41,4 +40,4 @@ jobs:
         run: |
           # Add any commands required to restart your application on the EC2 instance
           # Example: 
-          sudo ssh -i ~/.ssh/id_rsa.pem $EC2_USERNAME@$EC2_IP_ADDRESS "cd summer23_gregslistNode && npm run build && pm2 restart gregslist"
+          sudo ssh -i ~/.ssh/id_rsa.pem $EC2_USERNAME@$EC2_IP_ADDRESS "echo "${{secrets.ENV}}" > ~/summer23_gregslistNode/gregslistNode/.env && cd ~/summer23_gregslistNode && npm run build && pm2 restart gregslist"
