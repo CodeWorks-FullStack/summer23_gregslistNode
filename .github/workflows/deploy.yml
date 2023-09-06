@@ -30,7 +30,7 @@ jobs:
           sudo ssh -i ~/.ssh/id_rsa.pem -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_IP_ADDRESS '
             sudo rm -rf summer23_gregslistNode &&
             mkdir summer23_gregslistNode &&
-            echo "${{secrets.ENV}}" > summer23_gregslistNode/.env
+            echo "${{secrets.ENV}}" > summer23_gregslistNode/gregslistNode/.env
             '
 
       - name: Copy your code to the EC2📔
