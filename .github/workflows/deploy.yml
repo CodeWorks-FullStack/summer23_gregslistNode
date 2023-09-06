@@ -25,9 +25,17 @@ jobs:
           echo "$EC2_PEM_KEY" > ~/.ssh/id_rsa.pem
           chmod 600 ~/.ssh/id_rsa.pem
 
+      - name: Cleanup 🧹
+        run: |
+          sudo ssh -i ~/.ssh/id_rsa.pem -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_IP_ADDRESS '
+            sudo rm -rf summer23_gregslistNode &&
+            mkdir summer23_gregslistNode &&
+            echo "${{secrets.ENV}}" > summer23_gregslistNode/.env
+            '
+
       - name: Copy your code to the EC2📔
         run: |
-          sudo scp -i ~/.ssh/id_rsa.pem -o StrictHostKeyChecking=no -r $GITHUB_WORKSPACE $EC2_USERNAME@$EC2_IP_ADDRESS:~/summer23_gregslistNode
+          sudo scp -i ~/.ssh/id_rsa.pem -o StrictHostKeyChecking=no -r $GITHUB_WORKSPACE $EC2_USERNAME@$EC2_IP_ADDRESS:~/
 
       - name: Restart the EC2 🔃
         run: |

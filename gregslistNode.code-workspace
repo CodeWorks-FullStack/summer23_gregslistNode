@@ -8,6 +8,10 @@
     {
       "path": "gregslistNode",
       "name": "server"
+    },
+    {
+      "path": ".github/workflows",
+      "name": "workflows"
     }
   ],
   "settings": {
